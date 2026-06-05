@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARPHEREIN</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+}
+
+header{
+    background:linear-gradient(135deg,#6c8ebf,#9bb5d6);
+    color:white;
+    text-align:center;
+    padding:80px 20px;
+}
+
+header h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+header p{
+    font-size:1.1rem;
+}
+
+nav{
+    background:white;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    position:sticky;
+    top:0;
+}
+
+nav a{
+    text-decoration:none;
+    color:#5a6f8f;
+    margin:0 15px;
+    font-weight:600;
+}
+
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom:30px;
+}
+
+h2{
+    color:#5a6f8f;
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.member{
+    background:#eef3f8;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.member img{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:10px;
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    background:#dfe8f2;
+    color:#555;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:15px;
+    background:#6c8ebf;
+    color:white;
+    padding:12px 24px;
+    border-radius:30px;
+    text-decoration:none;
+}
+
+.btn:hover{
+    background:#5677a8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>ARPHEREIN</h1>
+    <p>Grace in Unity, Strength in Tigetherness</p>
+</header>
+
+<nav>
+    <a href="#tentang">Tentang</a>
+    <a href="#wali">Wali Kelas</a>
+    <a href="#anggota">Anggota</a>
+    <a href="#galeri">Galeri</a>
+</nav>
+
+<section id="tentang">
+    <div class="card">
+        <h2>Tentang Kelas</h2>
+        <p>
+            Kelas X-1 merupakan kelas dengan jumlah siswa-siswi 24 orang, di Man Insan Cendekia Kendari. Kelas yang solid, dengan berbagai sifat dan latar belakang. Punya berbagai bakat yang hebat.
+        </p>
+    </div>
+</section>
+
+<section id="wali">
+    <div class="card">
+        <h2>Wali Kelas</h2>
+        <p><strong>Nama Wali Kelas:</strong> Ibu Tina Suryawati, S.Pd</p>
+        <p><strong>Moto:</strong> "Belajar hari ini, sukses di masa depan."</p>
+    </div>
+</section>
+
+<section id="anggota">
+    <h2>Struktur Kelas</h2>
+
+    <div class="grid">
+        <div class="member">
+            <h3>Ketua Kelas</h3>
+            <p>Muhammad Fiqih al-muafah</p>
+        </div>
+
+        <div class="member">
+            <h3>Wakil Ketua</h3>
+            <p>Alifian Alfachreza</p>
+        </div>
+
+        <div class="member">
+            <h3>Sekretaris</h3>
+            <p>Shelatul Aulia Almahira</p>
+        </div>
+
+        <div class="member">
+            <h3>Bendahara</h3>
+            <p>Vannesa Elmas Medina</p>
+        </div>
+    </div>
+</section>
+
+<section id="galeri">
+    <div class="card">
+        <h2>Galeri Kegiatan</h2>
+
+        <div class="grid">
+            <img src="https://via.placeholder.com/350x220"
+                 style="width:100%; border-radius:15px;">
+
+            <img src="https://via.placeholder.com/350x220"
+                 style="width:100%; border-radius:15px;">
+
+            <img src="https://via.placeholder.com/350x220"
+                 style="width:100%; border-radius:15px;">
+        </div>
+
+        <a href="#" class="btn">Lihat Selengkapnya</a>
+    </div>
+</section>
+
+<footer>
+    © 2026 Profil Kelas X-A | Dibuat oleh Tim Kelas
+</footer>
+
+</body>
+</html>
