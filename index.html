@@ -278,6 +278,13 @@ footer{
     color:white;
 }
 
+.empty-gallery{
+    text-align:center;
+    padding:40px 20px;
+    color:#800020;
+    font-size:1.1rem;
+}
+
 @media(max-width:768px){
     .gallery-grid{
         grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -373,50 +380,13 @@ footer{
 
         <!-- GALLERY GRID -->
         <div class="gallery-grid" id="galleryGrid">
-            <div class="gallery-item" data-category="akademik" onclick="openModal(0)">
-                <img src="https://github.com/wulan261210/index.html/raw/images/1000033598.jpeg" alt="Kegiatan Akademik 1">
-                <div class="gallery-overlay">
-                    <span class="gallery-overlay-icon">🔍</span>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="olahraga" onclick="openModal(1)">
-                <img src="https://github.com/wulan261210/index.html/raw/images/DSC00189.JPG" alt="Olahraga 1">
-                <div class="gallery-overlay">
-                    <span class="gallery-overlay-icon">🔍</span>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="akademik" onclick="openModal(2)">
-                <img src="https://github.com/wulan261210/index.html/raw/images/unnamed.png" alt="Kegiatan Akademik 2">
-                <div class="gallery-overlay">
-                    <span class="gallery-overlay-icon">🔍</span>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="sosial" onclick="openModal(3)">
-                <img src="https://images.unsplash.com/photo-1517457373614-b7152f800fd1?w=400&h=300&fit=crop" alt="Kegiatan Sosial 1">
-                <div class="gallery-overlay">
-                    <span class="gallery-overlay-icon">🔍</span>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="olahraga" onclick="openModal(4)">
-                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=300&fit=crop" alt="Olahraga 2">
-                <div class="gallery-overlay">
-                    <span class="gallery-overlay-icon">🔍</span>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="sosial" onclick="openModal(5)">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Kegiatan Sosial 2">
-                <div class="gallery-overlay">
-                    <span class="gallery-overlay-icon">🔍</span>
-                </div>
-            </div>
         </div>
 
-        <a href="#" class="btn" onclick="alert('Lebih banyak galeri akan ditambahkan segera!')">Lihat Selengkapnya</a>
+        <div class="empty-gallery">
+            Galeri akan segera diperbarui dengan foto-foto kegiatan kelas 🎉
+        </div>
+
+        <a href="#" class="btn" onclick="alert('Galeri sedang dikembangkan. Nantikan update berikutnya!')">Lihat Selengkapnya</a>
     </div>
 </section>
 
@@ -428,7 +398,7 @@ footer{
         <img id="modalImage" class="modal-image" src="" alt="">
         <span class="next-btn" onclick="changeImage(1)">&#10095;</span>
         <div class="image-counter">
-            <span id="imageCounter">1</span> / <span id="imageTotalCounter">6</span>
+            <span id="imageCounter">1</span> / <span id="imageTotalCounter">0</span>
         </div>
     </div>
 </div>
