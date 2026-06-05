@@ -110,6 +110,195 @@ footer{
 .btn:hover{
     background:#660018;
 }
+
+/* GALERI STYLES */
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:15px;
+    cursor:pointer;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    height:220px;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 0.3s ease;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.1);
+}
+
+.gallery-overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:rgba(128,0,32,0.8);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    transition:opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay{
+    opacity:1;
+}
+
+.gallery-overlay-icon{
+    color:white;
+    font-size:40px;
+}
+
+/* MODAL STYLES */
+.modal{
+    display:none;
+    position:fixed;
+    z-index:1000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,0.9);
+    animation:fadeIn 0.3s ease;
+}
+
+.modal-content{
+    position:relative;
+    margin:auto;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.modal-image{
+    max-width:90%;
+    max-height:85vh;
+    border-radius:10px;
+}
+
+.close-btn{
+    position:absolute;
+    top:30px;
+    right:40px;
+    color:white;
+    font-size:40px;
+    font-weight:bold;
+    cursor:pointer;
+    z-index:1001;
+}
+
+.close-btn:hover{
+    color:#ccc;
+}
+
+.prev-btn, .next-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    color:white;
+    font-size:35px;
+    font-weight:bold;
+    cursor:pointer;
+    padding:10px 15px;
+    background:rgba(128,0,32,0.7);
+    border-radius:5px;
+    user-select:none;
+    z-index:1001;
+}
+
+.prev-btn:hover, .next-btn:hover{
+    background:rgba(128,0,32,1);
+}
+
+.prev-btn{
+    left:20px;
+}
+
+.next-btn{
+    right:20px;
+}
+
+.image-counter{
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+    color:white;
+    font-size:16px;
+    background:rgba(0,0,0,0.5);
+    padding:10px 15px;
+    border-radius:20px;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* FILTER BUTTONS */
+.filter-buttons{
+    display:flex;
+    gap:10px;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+}
+
+.filter-btn{
+    background:#f0f0f0;
+    color:#800020;
+    border:2px solid #800020;
+    padding:8px 16px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:600;
+    transition:all 0.3s ease;
+}
+
+.filter-btn.active{
+    background:#800020;
+    color:white;
+}
+
+.filter-btn:hover{
+    background:#800020;
+    color:white;
+}
+
+@media(max-width:768px){
+    .gallery-grid{
+        grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    }
+
+    .prev-btn, .next-btn{
+        font-size:25px;
+        padding:8px 12px;
+    }
+
+    .close-btn{
+        font-size:30px;
+        right:20px;
+        top:20px;
+    }
+
+    .modal-image{
+        max-width:95%;
+        max-height:70vh;
+    }
+}
 </style>
 </head>
 
@@ -174,24 +363,155 @@ footer{
     <div class="card">
         <h2>Galeri Kegiatan</h2>
 
-        <div class="grid">
-            <img src="https://via.placeholder.com/350x220"
-                 style="width:100%; border-radius:15px;">
-
-            <img src="https://via.placeholder.com/350x220"
-                 style="width:100%; border-radius:15px;">
-
-            <img src="https://via.placeholder.com/350x220"
-                 style="width:100%; border-radius:15px;">
+        <!-- FILTER BUTTONS -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterGallery('all')">Semua</button>
+            <button class="filter-btn" onclick="filterGallery('akademik')">Akademik</button>
+            <button class="filter-btn" onclick="filterGallery('olahraga')">Olahraga</button>
+            <button class="filter-btn" onclick="filterGallery('sosial')">Sosial</button>
         </div>
 
-        <a href="#" class="btn">Lihat Selengkapnya</a>
+        <!-- GALLERY GRID -->
+        <div class="gallery-grid" id="galleryGrid">
+            <div class="gallery-item" data-category="akademik" onclick="openModal(0)">
+                <img src="https://images.unsplash.com/photo-1427504494785-cdde7dcbab89?w=400&h=300&fit=crop" alt="Kegiatan Akademik 1">
+                <div class="gallery-overlay">
+                    <span class="gallery-overlay-icon">🔍</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="olahraga" onclick="openModal(1)">
+                <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400&h=300&fit=crop" alt="Olahraga 1">
+                <div class="gallery-overlay">
+                    <span class="gallery-overlay-icon">🔍</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="akademik" onclick="openModal(2)">
+                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop" alt="Kegiatan Akademik 2">
+                <div class="gallery-overlay">
+                    <span class="gallery-overlay-icon">🔍</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="sosial" onclick="openModal(3)">
+                <img src="https://images.unsplash.com/photo-1517457373614-b7152f800fd1?w=400&h=300&fit=crop" alt="Kegiatan Sosial 1">
+                <div class="gallery-overlay">
+                    <span class="gallery-overlay-icon">🔍</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="olahraga" onclick="openModal(4)">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400&h=300&fit=crop" alt="Olahraga 2">
+                <div class="gallery-overlay">
+                    <span class="gallery-overlay-icon">🔍</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="sosial" onclick="openModal(5)">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Kegiatan Sosial 2">
+                <div class="gallery-overlay">
+                    <span class="gallery-overlay-icon">🔍</span>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" class="btn" onclick="alert('Lebih banyak galeri akan ditambahkan segera!')">Lihat Selengkapnya</a>
     </div>
 </section>
+
+<!-- MODAL LIGHTBOX -->
+<div id="imageModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <span class="prev-btn" onclick="changeImage(-1)">&#10094;</span>
+        <img id="modalImage" class="modal-image" src="" alt="">
+        <span class="next-btn" onclick="changeImage(1)">&#10095;</span>
+        <div class="image-counter">
+            <span id="imageCounter">1</span> / <span id="imageTotalCounter">6</span>
+        </div>
+    </div>
+</div>
 
 <footer>
     © 2026 Profil Kelas X-A | Dibuat oleh Tim Kelas
 </footer>
+
+<script>
+let currentImageIndex = 0;
+const galleryImages = document.querySelectorAll('.gallery-item');
+let visibleImages = Array.from(galleryImages);
+
+function openModal(index) {
+    const modal = document.getElementById('imageModal');
+    const visibleGalleryItems = document.querySelectorAll('.gallery-item:not([style*="display: none"])');
+    
+    let actualIndex = 0;
+    for (let i = 0; i < galleryImages.length; i++) {
+        if (galleryImages[i] === visibleGalleryItems[index]) {
+            actualIndex = i;
+            break;
+        }
+    }
+    
+    currentImageIndex = actualIndex;
+    const img = galleryImages[currentImageIndex].querySelector('img');
+    
+    document.getElementById('modalImage').src = img.src;
+    document.getElementById('imageCounter').textContent = index + 1;
+    document.getElementById('imageTotalCounter').textContent = visibleGalleryItems.length;
+    modal.style.display = 'block';
+}
+
+function closeModal() {
+    document.getElementById('imageModal').style.display = 'none';
+}
+
+function changeImage(direction) {
+    const visibleGalleryItems = document.querySelectorAll('.gallery-item:not([style*="display: none"])');
+    const currentVisible = visibleGalleryItems[currentImageIndex];
+    
+    let newIndex = Array.from(visibleGalleryItems).indexOf(currentVisible) + direction;
+    
+    if (newIndex >= visibleGalleryItems.length) newIndex = 0;
+    if (newIndex < 0) newIndex = visibleGalleryItems.length - 1;
+    
+    currentImageIndex = Array.from(galleryImages).indexOf(visibleGalleryItems[newIndex]);
+    
+    const img = visibleGalleryItems[newIndex].querySelector('img');
+    document.getElementById('modalImage').src = img.src;
+    document.getElementById('imageCounter').textContent = newIndex + 1;
+}
+
+function filterGallery(category) {
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    galleryImages.forEach((item, index) => {
+        if (category === 'all' || item.dataset.category === category) {
+            item.style.display = 'grid';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById('imageModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+}
+
+document.addEventListener('keydown', function(event) {
+    const modal = document.getElementById('imageModal');
+    if (modal.style.display === 'block') {
+        if (event.key === 'ArrowLeft') changeImage(-1);
+        if (event.key === 'ArrowRight') changeImage(1);
+        if (event.key === 'Escape') closeModal();
+    }
+});
+</script>
 
 </body>
 </html>
